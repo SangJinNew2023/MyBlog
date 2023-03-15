@@ -1,13 +1,8 @@
-import environ
 from .base import *
 
-ALLOWED_HOSTS = ['50.112.222.87']
-STATIC_ROOT = BASE_DIR / 'static/'
+ALLOWED_HOSTS = [env('ALLOWED_HOSTS_PROD')]
 STATICFILES_DIRS = []
 DEBUG = False
-
-env = environ.Env()
-environ.Env.read_env(BASE_DIR / '.env')
 
 DATABASES = {
     "default": {
