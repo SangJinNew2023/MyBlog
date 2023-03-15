@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <!-- myboard CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'simplemde.min.css' %}">
+    <script src="{% static 'simplemde.min.js' %}"></script>
+    <title>MyBoard</title>
+</head>
+<body>
+<!-- navbar -->
+{% include "myboard_partials/navbar.html" %}
+{% include "myboard_partials/category_bar.html" %}
+<!-- Start content in basic template -->
+{% block content %}
+{% endblock %}
+<!-- End content in basic template -->
+<!-- Bootstrap JS -->
+<script src="{% static 'bootstrap.min.js' %}"></script>
+<!-- javascript Start -->
+{% block script %}
+{% endblock %}
+<!-- javascript End -->
+</body>
+</html>

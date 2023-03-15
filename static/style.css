@@ -1,0 +1,5 @@
+.cover{
+    background: url('/media/background.jpg');
+    background-position: center;
+    background-size: cover;
+}from .base import *

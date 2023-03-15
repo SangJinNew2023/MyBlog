@@ -1,0 +1,42 @@
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom justify-content-end">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'myboard:index' %}">MyBoard</a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupporttedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav ml-auto">
+                <li>
+                <a class="nav-link text-white" href="{% url 'logout' %}">{{ user.username }}(Logout)</a>
+                </li>
+                <li>
+                <a class="nav-link" href="{% url 'myblog-index' %}"><small>MyBlog</small></a>
+                </li>
+            </ul>
+            {% else %}
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <a class="nav-link text-white" href="{% url 'signup' %}">SignUp</a>
+                </li>
+                <li>
+                    <a class="nav-link text-white" href="{% url 'login' %}">Login</a>
+                </li>
+                <li>
+                <a class="nav-link" href="{% url 'myblog-index' %}"><small>MyBlog</small></a>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</nav>
+
+
+
+
