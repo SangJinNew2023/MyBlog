@@ -21,11 +21,13 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", base_views.index),
     path("myboard/", include('myboard.urls')),
     path("myboard_users/", include('myboard_users.urls')),
     path("myblog/", include('myblog.urls')),
     path("myblog_users/", include('myblog_users.urls')),
-    path("", base_views.index),
+    path('myinventory/', include('myinventory.urls')),
+    path('myinventory_users/', include('myinventory_users.urls')),
 ]
 
 handler404 = 'myboard_users.views.page_not_found'

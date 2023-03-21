@@ -16,6 +16,9 @@
          <li>
           <a class="nav-link text-light" href="{% url 'myboard:index' %}"><small>MyBoard</small></a>
         </li>
+        <li>
+          <a class="nav-link text-light" href="{% url 'dashboard-index' %}"><small>MyInventory</small></a>
+        </li>
       </ul>
       {% else %}
       <ul class="navbar-nav ml-auto">
@@ -27,6 +30,9 @@
         </li>
         <li>
           <a class="nav-link text-light" href="{% url 'myboard:index' %}"><small>MyBoard</small></a>
+        </li>
+        <li>
+          <a class="nav-link text-light" href="{% url 'dashboard-index' %}"><small>MyInventory</small></a>
         </li>
       </ul>
     </div>

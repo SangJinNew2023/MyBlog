@@ -3,16 +3,14 @@ from .models import PostModel
 from .forms import PostModelForm, PostUpdateForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 
 # Create your views here.
-
 def index(request):
-    # page = request.GET.get('page', '1')
+    page = request.GET.get('page', '1')
     posts = PostModel.objects.all()
-    # paginator = Paginator(posts, 6)
-    # page_obj = paginator.get_page(page)
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user.is_authenticated:
         form = PostModelForm(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
@@ -21,8 +19,10 @@ def index(request):
             return redirect('myblog-index')
     else:
         form = PostModelForm()
+    paginator = Paginator(posts, 5)
+    page_obj = paginator.get_page(page)
     context = {
-        'posts': posts,
+        'posts': page_obj,
         'form': form,
     }
     return render(request, 'myblog/index.html', context)

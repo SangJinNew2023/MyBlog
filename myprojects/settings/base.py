@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     "myboard_users.apps.MyboardUsersConfig",
     "myblog.apps.MyblogConfig",
     "myblog_users.apps.MyblogUsersConfig",
+    "myinventory.apps.MyinventoryConfig",
+    "myinventory_users.apps.MyinventoryUsersConfig",
     'crispy_forms',
     'crispy_bootstrap5',
 ]
@@ -150,6 +152,13 @@ MEDIA_URL = '/media/'
 
 #Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_ROOT = (BASE_DIR / 'media')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # #Logging setting
 # LOGGING = {

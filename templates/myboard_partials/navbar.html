@@ -17,7 +17,10 @@
                 <a class="nav-link text-white" href="{% url 'logout' %}">{{ user.username }}(Logout)</a>
                 </li>
                 <li>
-                <a class="nav-link" href="{% url 'myblog-index' %}"><small>MyBlog</small></a>
+                <a class="nav-link text-light" href="{% url 'myblog-index' %}"><small>MyBlog</small></a>
+                </li>
+                <li>
+                    <a class="nav-link text-light" href="{% url 'dashboard-index' %}"><small>MyInventory</small></a>
                 </li>
             </ul>
             {% else %}
@@ -29,7 +32,10 @@
                     <a class="nav-link text-white" href="{% url 'login' %}">Login</a>
                 </li>
                 <li>
-                <a class="nav-link" href="{% url 'myblog-index' %}"><small>MyBlog</small></a>
+                <a class="nav-link text-light" href="{% url 'myblog-index' %}"><small>MyBlog</small></a>
+                </li>
+                <li>
+                    <a class="nav-link text-light" href="{% url 'dashboard-index' %}"><small>MyInventory</small></a>
                 </li>
             </ul>
         </div>
