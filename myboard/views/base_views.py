@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 import logging
 
-logger = logging.getLogger('mysitev1')
+logger = logging.getLogger('myprojects')
 
 from ..models import Question, Answer, Category
 
