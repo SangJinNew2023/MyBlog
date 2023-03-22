@@ -39,7 +39,7 @@ def detail(request, question_id):
     category = Category.objects.order_by('id')
     question = get_object_or_404(Question, pk=question_id)
     page=request.GET.get('page', '1')
-    answer_list=Answer.objects.filter(question=question).order_by('-voter')
+    answer_list=Answer.objects.filter(question=question).order_by('-create_date')
     paginator = Paginator(answer_list, 5)
     page_obj = paginator.get_page(page)
     context = {'answer_list': page_obj, 'question': question,  'category': category}
