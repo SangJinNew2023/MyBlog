@@ -160,7 +160,7 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-#Logging setting
+# Logging setting
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
