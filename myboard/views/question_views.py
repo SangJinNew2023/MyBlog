@@ -49,7 +49,7 @@ def question_delete(request, question_id):
         messages.error(request, '"You do not have permission to delete."')
         return redirect('myboard:detail', question_id=question.id)
     question.delete()
-    return redirect('mysitev1:index')
+    return redirect('myboard:index')
 
 @login_required(login_url='login')
 def question_vote(request, question_id):
