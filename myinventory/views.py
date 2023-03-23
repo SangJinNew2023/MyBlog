@@ -40,7 +40,7 @@ def index(request):
 @login_required(login_url='myiventory-user-login')
 def staff(request):
     workers = User.objects.all()
-    workers_count = workers.count()
+    workers_count = workers.all().count()
     products_count = Product.objects.all().count()
     orders_count = Order.objects.all().count()
     context = {
@@ -53,7 +53,7 @@ def staff(request):
 
 def staff_detail(request, pk):
     workers = User.objects.get(id=pk)
-    workers_count = workers.count()
+    workers_count = User.objects.all().count()
     products_count = Product.objects.all().count()
     orders_count = Order.objects.all().count()
     context = {
