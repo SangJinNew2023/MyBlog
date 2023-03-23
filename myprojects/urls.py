@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path,include
 from myboard.views import base_views
 from django.conf import settings
+from django.conf.urls import url
+from django.views.static import serve
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -31,8 +33,8 @@ urlpatterns = [
 ]
 
 handler404 = 'myboard_users.views.page_not_found'
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns+=url(r'^media/(?P<path>.\*)$', serve, {'document_root': settings.MEDIA_ROOT,})
 
 # You should not do this in production, so the if settings.DEBUG check is added.
 # In production, you should configure your server (e.g. Nginx or Apache)
