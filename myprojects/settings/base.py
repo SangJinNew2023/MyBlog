@@ -147,11 +147,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-#Absolute filesystem path to the directory that will hold user-uploaded files.
-MEDIA_URL = '/media/'
-
-#Absolute filesystem path to the directory that will hold user-uploaded files.
-MEDIA_ROOT = (BASE_DIR / 'media')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
