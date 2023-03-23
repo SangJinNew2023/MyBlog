@@ -7,12 +7,6 @@ STATIC_ROOT = (BASE_DIR / 'static')
 
 STATICFILES_DIRS = []
 
-#Absolute filesystem path to the directory that will hold user-uploaded files.
-MEDIA_URL = '/media/'
-
-#Absolute filesystem path to the directory that will hold user-uploaded files.
-MEDIA_ROOT = (BASE_DIR / 'media')
-
 DEBUG = False
 
 DATABASES = {
