@@ -31,7 +31,7 @@ urlpatterns = [
 ]
 
 handler404 = 'myboard_users.views.page_not_found'
-if settings.DEBUG:
+if settings.base.DEBUG:
     urlpatterns += static(settings.base.MEDIA_URL, document_root=settings.base.MEDIA_ROOT)
 
 # You should not do this in production, so the if settings.DEBUG check is added.
