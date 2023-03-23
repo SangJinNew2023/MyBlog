@@ -14,12 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path,include, re_path
 from myboard.views import base_views
 from django.conf import settings
-from django.conf.urls import url
 from django.views.static import serve
-from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -34,7 +32,7 @@ urlpatterns = [
 
 handler404 = 'myboard_users.views.page_not_found'
 
-urlpatterns+=url(r'^media/(?P<path>.\*)$', serve, {'document_root': settings.MEDIA_ROOT,})
+urlpatterns += re_path(r'^media/(?P<path>.\*)$', serve, {'document_root': settings.MEDIA_ROOT,})
 
 # You should not do this in production, so the if settings.DEBUG check is added.
 # In production, you should configure your server (e.g. Nginx or Apache)
