@@ -38,7 +38,3 @@ urlpatterns = [
         template_name='myinventory_users/password_reset_complete.html'), name='password_reset_complete'),
 ]
 
-
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
