@@ -21,14 +21,10 @@
             <div class="card card border-white mb-3">
                 <div class="card-body">
                     <!-- Category Start-->
-                    {% for category in category %}
-                    {% if category == question.category %}
-                    <div class="ms-1" style='text-transform: uppercase'><small>[{{category.name}} Board]</small></div>
+                    <div class="ms-1"><small>[{{question.category}} Board]</small></div>
                     <!-- Category End-->
                     <h2>{{ question.subject }}</h2>
                     <hr>
-                    {% endif %}
-                    {% endfor %}
                     <div class="card-text">{{ question.content|mark }}</div> <!-- markdown is applied-->
                     <div class="d-flex justify-content-end">
                         <div class="badge bg-light text-dark p-2 text-start">

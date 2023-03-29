@@ -10,7 +10,6 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from .forms import UserForm
-from myboard.models import Category
 from django.contrib.auth.views import LoginView
 
 # Create your views here.
@@ -36,7 +35,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password) #user authentication
             login(request, user) #login
-            return redirect('index')
+            return redirect('myboard:index')
     else:
         form = UserForm()
     return render(request, 'myboard_users/signup.html', {'form': form})

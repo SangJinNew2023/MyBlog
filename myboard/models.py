@@ -1,20 +1,22 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
-class Category(models.Model):
-    name = models.CharField(max_length=20, unique=True)
 
-    def __str__(self):
-        return self.name
-    # def get_absolute_url(sel):
-    #     return reverse('mysitev1:index', args=[self.name])
+# Create your models here.
+CATEGORY = (('QnA','QnA' ),
+            ('Free','Free'),
+            ('Python','Python' ),
+            ('Go','Go' ),
+            ('Javascript','Javascript'),
+            ('Notice','Notice'),
+            )
+
 class Question(models.Model):
     subject = models.CharField(max_length=200)
     content = models.TextField()
     modify_date = models.DateTimeField(null=True, blank=True)
     create_date = models.DateTimeField()
     voter = models.ManyToManyField(User, related_name='voter_question')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.CharField(max_length=20, choices=CATEGORY, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_question')
 
     def __str__(self): #Question.objects.all()같은 query 실행시 subject 명을 리턴함

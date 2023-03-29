@@ -1,15 +1,11 @@
 from django import forms
-from .models import Question, Answer, Comment, Category
+from .models import Question, Answer, Comment
 
 
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ['subject', 'content']
-        widgets = {
-            'subject':forms.TextInput(attrs={'class':'form-control'}),
-            'content': forms.Textarea(attrs={'class': 'form-control', 'rows':10}),
-        }
+        fields = ['category', 'subject', 'content']
 
 class AnswerForm(forms.ModelForm):
     class Meta:
@@ -21,7 +17,3 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['content']
 
-class CategorytForm(forms.ModelForm):
-    class Meta:
-        model = Category
-        fields = ['name']

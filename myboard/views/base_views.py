@@ -5,19 +5,18 @@ import logging
 
 logger = logging.getLogger('myprojects')
 
-from ..models import Question, Answer, Category
+from ..models import Question, Answer
 
 def index(request, category_name=None):
     logger.info("Show with the INFO level")
     page = request.GET.get('page', '1')
     kw = request.GET.get('kw', '')
 
-    category = Category.objects.order_by('id')
+    # category = Qustion.objects.order_by(category='id')
     if category_name is None:
         question_list = Question.objects.order_by('-create_date')
     else:
-        category_id = Category.objects.get(name=category_name)
-        question_list = Question.objects.filter(category_id=category_id)
+        question_list = Question.objects.filter(category=category_name)
 
     #Search
     if kw:
@@ -32,16 +31,15 @@ def index(request, category_name=None):
     #Patination
     paginator = Paginator(question_list, 10) # 페이지당 10개
     page_obj = paginator.get_page(page)
-    context = {'question_list':page_obj, 'page':page, 'kw': kw, 'category': category}
+    context = {'question_list':page_obj, 'page':page, 'kw': kw}
     return render(request, 'myboard/question_list.html', context)
 
 def detail(request, question_id):
-    category = Category.objects.order_by('id')
     question = get_object_or_404(Question, pk=question_id)
     page=request.GET.get('page', '1')
     answer_list=Answer.objects.filter(question=question).order_by('-create_date')
     paginator = Paginator(answer_list, 5)
     page_obj = paginator.get_page(page)
-    context = {'answer_list': page_obj, 'question': question,  'category': category}
+    context = {'answer_list': page_obj, 'question': question}
     return render(request, 'myboard/question_detail.html', context)
 

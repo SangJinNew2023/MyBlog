@@ -1,33 +1,33 @@
 {% extends 'myboard_partials/base.html' %}
 {% block title %}Question Form{% endblock %}
+{% load crispy_forms_tags %}
 {% block content %}
 <div class="container">
-    <h5 class="my-3 border-bottom pb-2">Create Post</h5>
-    <form method="post">
-        {% csrf_token %}
-        <!-- errorr indicator -->
-        {% include "myboard_partials/form_errors.html" %}
-        <!-- Category Select Start-->
-        <div class="col-2 mb-2">
-            <label>Category</label>
-            <select name="category">
-                <option value="qna">QnA</option>
-                <option value="free">Free</option>
-                <option value="notice">Notice</option>
-            </select>
-        </div>
-        <!-- Category Select End-->
-        <div class="mb-3">
-            <label class="mb-1">Subject</label>
-            <input type="text" class="form-control" name="subject" id="subject" value="{{ form.subject.value|default_if_none:'' }}">
-        </div>
-        <div class="mb-3">
-             <label for="content" class="form-label mb-1">Content</label>
-            <textarea class="form-control" name="content" id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
-        </div>
-        <button type="submit" class="btn btn-dark">Save</button>
-    </form>
-</div>
+    <div class="row mt-3 pt-3">
+            <div class="col-md-8 offset-md-2">
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="my-3 border-bottom pb-2">Create Post</h5>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                            <label>Category</label>
+                                 {{ form.category }}
+                            </div>
+                            <div class="mb-3">
+                                <label>Subject</label>
+                                <input type="text" class="form-control" name="subject" id="subject" value="{{ form.subject.value|default_if_none:'' }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="content" class="form-label">Content</label>
+                                <textarea class="form-control" name="content" id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
 {% endblock %}
 
 {% block script %}
