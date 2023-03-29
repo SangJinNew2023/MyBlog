@@ -9,13 +9,13 @@ class Category(models.Model):
     # def get_absolute_url(sel):
     #     return reverse('mysitev1:index', args=[self.name])
 class Question(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_question')
     subject = models.CharField(max_length=200)
     content = models.TextField()
     modify_date = models.DateTimeField(null=True, blank=True)
     create_date = models.DateTimeField()
     voter = models.ManyToManyField(User, related_name='voter_question')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_question')
 
     def __str__(self): #Question.objects.all()같은 query 실행시 subject 명을 리턴함
         return self.subject
